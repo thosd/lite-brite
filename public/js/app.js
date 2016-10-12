@@ -16,10 +16,6 @@
         return (Math.min(max, Math.max(min, v)));
     }
 
-
-
-
-
     function updateGridSize(){
       clearGrid();//remove the current grid
       //grab the number of columns from the input for the new grid
@@ -41,7 +37,6 @@
         alert("Please enter values!");
         clearGrid();
         return;
-
       }
       if (newRowNumber > 100) {
         alert("Max grid size exceeded.  Please choose a value between 1 & 100");
@@ -59,7 +54,7 @@
       canvas.empty();
     }
     function changeColor(event){
-      //just 'this' cells backgriybd
+      //just 'this' cells background
       $(this).toggleClass('red');
     }
     function makeGrid(numberOfRows, numberOfCols){
