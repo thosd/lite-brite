@@ -5,12 +5,16 @@
     var updateGridButton = $('#update-grid-button');
     var numberOfColsInput = $('#number-of-cols');
     var numberOfRowsInput = $('#number-of-rows');
+    var colorPalette = $('#color-palette');
 
     makeGrid(15, 15);
     $('.cell').on('click', changeColor);
     updateGridButton.on('click', updateGridSize);
     //clearGrid();
-    //makeGrid(30, 15);
+    //makeGrid(15, 15);
+
+    makePalette(6);
+
 
     function valBetween(v, min, max) {
         return (Math.min(max, Math.max(min, v)));
@@ -22,7 +26,6 @@
       var newColNumber = parseInt(numberOfColsInput.val());
       if (!numberOfColsInput.val()) {
         alert("Please enter values!");
-        clearGrid();
         return;
       }
       if (newColNumber > 100) {
@@ -35,7 +38,6 @@
       var newRowNumber = parseInt(numberOfRowsInput.val());
       if (!numberOfRowsInput.val()) {
         alert("Please enter values!");
-        clearGrid();
         return;
       }
       if (newRowNumber > 100) {
@@ -53,10 +55,12 @@
     function clearGrid(){
       canvas.empty();
     }
+
     function changeColor(event){
       //just 'this' cells background
       $(this).toggleClass('red');
     }
+
     function makeGrid(numberOfRows, numberOfCols){
       //let's make some rows and put them in the body
       for(var rowCount = 0; rowCount < numberOfRows; rowCount += 1) {
@@ -68,8 +72,19 @@
         }
         canvas.append(row);
       }
+    }
 
-  }
+    function makePalette(numberOfCols) {
+      var row = $('<tr></tr>');
+      for(var colCount  = 0; colCount < numberOfCols; colCount +=1) {
+        var column = $('<td></td>');
+        column.addClass('cell');
+        row.append(column);
+      }
+      colorPalette.append(row);
+    }
+
+
 
 
 }());
